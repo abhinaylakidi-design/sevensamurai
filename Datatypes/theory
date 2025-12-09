@@ -1,0 +1,161 @@
+Here is your **JavaScript Data Types explanation in full theory format**, based completely on the code you provided.
+Use this as **notes**, **assignment**, or **interview preparation**. ✅
+
+---
+
+# 📘 **JavaScript Data Types – Theory Explanation**
+
+JavaScript data types are divided into two main categories:
+
+---
+
+# **1. Primitive Data Types**
+
+Primitive types store **single values** and are **immutable**.
+
+### **a. Number**
+
+Represents numeric values including integers and decimals.
+
+Example:
+
+```js
+let userage = 22;
+console.log(typeof userage);   // number
+```
+
+### **b. String**
+
+Represents text enclosed in quotes (`""`, `''`, or backticks ````).
+
+Example:
+
+```js
+let username = "Abhinay";
+console.log(typeof username);   // string
+```
+
+### **c. Boolean**
+
+Represents either `true` or `false`.
+
+Example:
+
+```js
+let usersignedin = true;
+console.log(typeof usersignedin);   // boolean
+```
+
+### **d. Undefined**
+
+A variable declared but not assigned any value.
+
+Example:
+
+```js
+let usercountry;
+console.log(typeof usercountry);    // undefined
+```
+
+### **e. Null**
+
+Represents an empty or unknown value.
+Note: **typeof null returns `"object"`** (this is a historical JavaScript bug).
+
+Example:
+
+```js
+let usercity = null;
+console.log(typeof usercity);   // object
+```
+
+---
+
+# **2. Non-Primitive (Reference) Data Types**
+
+Non-primitive types can store **collections** of values and are **mutable**.
+
+---
+
+## **a. Array**
+
+Used to store multiple values in a single variable.
+Values are accessed using index numbers (starting from 0).
+
+Example:
+
+```js
+let userdetails = ["Abhinay", 22, true, "India"];
+console.log(userdetails[0]);     // Abhinay
+console.log(typeof userdetails); // object
+```
+
+Note: Arrays always return `"object"` in `typeof`.
+
+---
+
+## **b. Object**
+
+Used to store data in key-value pairs.
+
+Example:
+
+```js
+let userprofile = {
+  name: "Abhinay",
+  age: 22,
+  signedin: true,
+  country: "India"
+};
+console.log(userprofile.name);   // Abhinay
+console.log(typeof userprofile); // object
+```
+
+---
+
+## **c. Array of Objects**
+
+It combines arrays and objects.
+Useful for storing multiple user records.
+
+Example:
+
+```js
+let users = [
+  { name: "Abhinay", age: 22 },
+  { name: "John", age: 25 },
+  { name: "Doe", age: 30 }
+];
+```
+
+Access examples:
+
+```js
+console.log(typeof users);   // object
+console.log(users[1]);       // { name: "John", age: 25 }
+console.log(users[2].age);   // 30
+```
+
+String concatenation and template literals:
+
+```js
+console.log(users[0].name + " age is " + users[0].age);
+// Abhinay age is 22
+
+console.log(`My name is ${users[0].name} and I am ${users[0].age} years old.`);
+// My name is Abhinay and I am 22 years old.
+```
+
+---
+
+# ⭐ **Summary Table**
+
+| Data Type | Example       | typeof Result |
+| --------- | ------------- | ------------- |
+| Number    | `22`          | `"number"`    |
+| String    | `"Abhinay"`   | `"string"`    |
+| Boolean   | `true`        | `"boolean"`   |
+| Undefined | `let x;`      | `"undefined"` |
+| Null      | `null`        | `"object"`    |
+| Array     | `["a", 22]`   | `"object"`    |
+| Object    | `{name: "A"}` | `"object"`    |
