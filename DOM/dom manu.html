@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f2f5f9;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #3f51b5;
+      color: white;
+      padding: 25px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .container {
+      width: 85%;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #3f51b5;
+      border-left: 5px solid #3f51b5;
+      padding-left: 10px;
+      margin-top: 40px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #333;
+    }
+
+    .example {
+      background: #eef1ff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    button {
+      padding: 10px 16px;
+      background: #3f51b5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #2c3a9f;
+    }
+
+    .box {
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      background: #ddd;
+    }
+
+    footer {
+      background: #3f51b5;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  DOM Manipulation in JavaScript
+</header>
+
+<div class="container">
+
+  <!-- INTRODUCTION -->
+  <h2>1. What is DOM Manipulation?</h2>
+  <p>
+    <strong>DOM Manipulation</strong> means using JavaScript to
+    <b>access, change, add, or remove HTML elements dynamically</b>
+    after the page has loaded.
+  </p>
+
+  <p>
+    JavaScript interacts with HTML through the <b>document</b> object.
+  </p>
+
+  <!-- CHANGE CONTENT -->
+  <h2>2. Changing HTML Content</h2>
+  <p>
+    We can change the content of an element using
+    <code>innerText</code> or <code>innerHTML</code>.
+  </p>
+
+  <div class="example">
+    <p id="text">This text will change</p>
+    <button onclick="changeText()">Change Text</button>
+  </div>
+
+  <!-- CHANGE STYLES -->
+  <h2>3. Changing CSS Styles</h2>
+  <p>
+    JavaScript can dynamically modify CSS styles using the
+    <code>style</code> property.
+  </p>
+
+  <div class="example">
+    <p id="styleText">Click to change my style</p>
+    <button onclick="changeStyle()">Change Style</button>
+  </div>
+
+  <!-- ATTRIBUTES -->
+  <h2>4. Manipulating Attributes</h2>
+  <p>
+    We can add, change, or remove HTML attributes using DOM methods.
+  </p>
+
+  <div class="example">
+    <img id="myImage" src="https://via.placeholder.com/150">
+    <br>
+    <button onclick="changeImage()">Change Image</button>
+  </div>
+
+  <!-- CREATE ELEMENT -->
+  <h2>5. Creating New Elements</h2>
+  <p>
+    JavaScript can create new HTML elements dynamically using
+    <code>createElement()</code> and <code>appendChild()</code>.
+  </p>
+
+  <div class="example">
+    <div id="newElements"></div>
+    <button onclick="createElementDemo()">Add New Element</button>
+  </div>
+
+  <!-- REMOVE ELEMENT -->
+  <h2>6. Removing Elements</h2>
+  <p>
+    Elements can be removed using <code>remove()</code>.
+  </p>
+
+  <div class="example">
+    <p id="removeMe">I will be removed</p>
+    <button onclick="removeElement()">Remove Text</button>
+  </div>
+
+  <!-- EVENTS -->
+  <h2>7. DOM Events</h2>
+  <p>
+    Events allow JavaScript to respond to user actions like clicks,
+    typing, or mouse movements.
+  </p>
+
+  <div class="example">
+    <button id="eventBtn">Click Me</button>
+    <p id="eventMsg"></p>
+  </div>
+
+</div>
+
+<footer>
+  DOM Manipulation – HTML + CSS + JavaScript
+</footer>
+
+<script>
+  /* Change content */
+  function changeText() {
+    document.getElementById("text").innerText =
+      "Text changed using DOM Manipulation!";
+  }
+
+  /* Change styles */
+  function changeStyle() {
+    let el = document.getElementById("styleText");
+    el.style.color = "white";
+    el.style.backgroundColor = "#3f51b5";
+    el.style.padding = "10px";
+    el.style.borderRadius = "5px";
+  }
+
+  /* Change attributes */
+  function changeImage() {
+    document.getElementById("myImage").setAttribute(
+      "src",
+      "https://via.placeholder.com/150/3f51b5/ffffff"
+    );
+  }
+
+  /* Create element */
+  function createElementDemo() {
+    let div = document.createElement("div");
+    div.className = "box";
+    div.innerText = "New element created using DOM";
+    document.getElementById("newElements").appendChild(div);
+  }
+
+  /* Remove element */
+  function removeElement() {
+    document.getElementById("removeMe").remove();
+  }
+
+  /* Event handling */
+  document.getElementById("eventBtn").addEventListener("click", function () {
+    document.getElementById("eventMsg").innerText =
+      "Button clicked using DOM Event!";
+  });
+</script>
+
+</body>
+</html>

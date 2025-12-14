@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM in JavaScript - Theory and Examples</title>
+  <style>
+    /* ---------- Global Styles ---------- */
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      color: white;
+      padding: 25px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .container {
+      width: 85%;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #4e54c8;
+      border-left: 6px solid #4e54c8;
+      padding-left: 12px;
+      margin-top: 40px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    .code-box {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 15px 0;
+      font-family: Consolas, monospace;
+      font-size: 14px;
+    }
+
+    .example {
+      background: #eef1ff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    button {
+      padding: 10px 18px;
+      background: #4e54c8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background: #373bb5;
+    }
+
+    .highlight {
+      color: #e63946;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #4e54c8;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  DOM (Document Object Model) in JavaScript
+</header>
+
+<div class="container">
+
+  <!-- Introduction -->
+  <h2>1. What is DOM?</h2>
+  <p>
+    The <span class="highlight">DOM (Document Object Model)</span> is a programming interface that represents an HTML document
+    as a <strong>tree of objects</strong>. JavaScript uses the DOM to access, modify, add, or remove HTML elements dynamically.
+  </p>
+
+  <div class="code-box">
+&lt;html&gt;<br>
+&nbsp;&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Hello DOM&lt;/h1&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;This is a paragraph&lt;/p&gt;<br>
+&nbsp;&nbsp;&lt;/body&gt;<br>
+&lt;/html&gt;
+  </div>
+
+  <p>
+    In the DOM tree:
+    <br>• <strong>document</strong> is the root
+    <br>• <strong>html</strong> is the parent node
+    <br>• <strong>h1</strong> and <strong>p</strong> are child nodes
+  </p>
+
+  <!-- Accessing Elements -->
+  <h2>2. Accessing DOM Elements</h2>
+  <p>JavaScript provides different methods to select HTML elements.</p>
+
+  <div class="code-box">
+document.getElementById("id")<br>
+document.getElementsByClassName("class")<br>
+document.getElementsByTagName("tag")<br>
+document.querySelector("css-selector")<br>
+document.querySelectorAll("css-selector")
+  </div>
+
+  <!-- Live Example -->
+  <div class="example">
+    <h3 id="demoHeading">This text will change</h3>
+    <button onclick="changeText()">Change Text</button>
+  </div>
+
+  <!-- Modifying Content -->
+  <h2>3. Modifying DOM Content</h2>
+  <p>
+    Once an element is selected, we can change its content using:
+  </p>
+
+  <div class="code-box">
+element.innerHTML = "New HTML Content";<br>
+element.innerText = "New Text Content";
+  </div>
+
+  <!-- Styling Elements -->
+  <h2>4. Modifying Styles Using DOM</h2>
+  <p>
+    JavaScript can dynamically change CSS styles using the <strong>style</strong> property.
+  </p>
+
+  <div class="example">
+    <p id="colorText">Click the button to change my style</p>
+    <button onclick="changeStyle()">Change Style</button>
+  </div>
+
+  <!-- Attributes -->
+  <h2>5. Working with Attributes</h2>
+  <p>
+    Attributes like <strong>src</strong>, <strong>href</strong>, <strong>class</strong> can be accessed or changed using DOM.
+  </p>
+
+  <div class="code-box">
+element.setAttribute("attribute", "value");<br>
+element.getAttribute("attribute");<br>
+element.removeAttribute("attribute");
+  </div>
+
+  <!-- Events -->
+  <h2>6. DOM Events</h2>
+  <p>
+    Events allow JavaScript to respond to user actions such as clicks, typing, or mouse movements.
+  </p>
+
+  <div class="example">
+    <button id="eventBtn">Click Me</button>
+    <p id="eventResult"></p>
+  </div>
+
+</div>
+
+<footer>
+  DOM in JavaScript – Structured & Styled Explanation
+</footer>
+
+<script>
+  /* ---------- DOM Manipulation Examples ---------- */
+
+  // Change text content
+  function changeText() {
+    document.getElementById("demoHeading").innerText =
+      "Text changed using DOM!";
+  }
+
+  // Change styles
+  function changeStyle() {
+    let text = document.getElementById("colorText");
+    text.style.color = "white";
+    text.style.backgroundColor = "#4e54c8";
+    text.style.padding = "10px";
+    text.style.borderRadius = "6px";
+  }
+
+  // Event handling
+  document.getElementById("eventBtn").addEventListener("click", function () {
+    document.getElementById("eventResult").innerText =
+      "Button clicked using addEventListener!";
+  });
+</script>
+
+</body>
+</html>
