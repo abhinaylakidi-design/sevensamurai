@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regular Expressions in JavaScript – Theory and Examples</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f3f6fb;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #11998e, #38ef7d);
+      color: white;
+      padding: 25px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .container {
+      width: 85%;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #11998e;
+      border-left: 5px solid #11998e;
+      padding-left: 10px;
+      margin-top: 40px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    .code-box {
+      background: #1e1e1e;
+      color: #dcdcdc;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: Consolas, monospace;
+      font-size: 14px;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+
+    .example {
+      background: #eafff4;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    input {
+      padding: 8px;
+      width: 250px;
+      font-size: 15px;
+    }
+
+    button {
+      padding: 8px 16px;
+      background: #11998e;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+
+    button:hover {
+      background: #0c7c6b;
+    }
+
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #11998e;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  Regular Expressions (RegEx) in JavaScript
+</header>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <h2>1. What is a Regular Expression?</h2>
+  <p>
+    A <strong>Regular Expression (RegEx)</strong> is a pattern used to
+    <b>match, search, validate, or replace text</b>.
+    In JavaScript, RegEx is commonly used for form validation,
+    searching strings, and data filtering.
+  </p>
+
+  <div class="code-box">
+let pattern = /hello/;
+  </div>
+
+  <!-- CREATE REGEX -->
+  <h2>2. Creating a Regular Expression</h2>
+  <p>There are two ways to create a RegEx in JavaScript:</p>
+
+  <div class="code-box">
+/pattern/flags
+
+new RegExp("pattern", "flags")
+  </div>
+
+  <!-- TEST METHOD -->
+  <h2>3. test() Method</h2>
+  <p>
+    The <code>test()</code> method checks whether a pattern exists in a string.
+    It returns <b>true</b> or <b>false</b>.
+  </p>
+
+  <div class="example">
+    <input type="text" id="testInput" placeholder="Enter text">
+    <button onclick="testRegex()">Test</button>
+    <p class="result" id="testResult"></p>
+  </div>
+
+  <!-- MATCH METHOD -->
+  <h2>4. match() Method</h2>
+  <p>
+    The <code>match()</code> method returns the matched value or
+    <code>null</code> if no match is found.
+  </p>
+
+  <div class="code-box">
+let text = "JavaScript is powerful";
+text.match(/script/i);
+  </div>
+
+  <!-- CHARACTER CLASSES -->
+  <h2>5. Character Classes</h2>
+  <p>Character classes match specific types of characters.</p>
+
+  <div class="code-box">
+\d  → digits (0-9) <br>
+\w  → letters, numbers, underscore <br>
+\s  → whitespace <br>
+.   → any character
+  </div>
+
+  <!-- EMAIL VALIDATION -->
+  <h2>6. RegEx Example – Email Validation</h2>
+  <div class="example">
+    <input type="text" id="email" placeholder="Enter email">
+    <button onclick="validateEmail()">Validate</button>
+    <p class="result" id="emailResult"></p>
+  </div>
+
+  <!-- FLAGS -->
+  <h2>7. RegEx Flags</h2>
+  <p>
+    Flags modify how a pattern works.
+  </p>
+
+  <div class="code-box">
+i → case-insensitive <br>
+g → global search <br>
+m → multi-line
+  </div>
+
+  <!-- REPLACE -->
+  <h2>8. replace() Method</h2>
+  <p>
+    The <code>replace()</code> method replaces matched text.
+  </p>
+
+  <div class="code-box">
+let text = "I love JavaScript";
+text.replace(/JavaScript/, "JS");
+  </div>
+
+</div>
+
+<footer>
+  Regular Expressions in JavaScript – Explained with Examples
+</footer>
+
+<script>
+  // test() example
+  function testRegex() {
+    let text = document.getElementById("testInput").value;
+    let pattern = /hello/i;
+
+    document.getElementById("testResult").innerText =
+      pattern.test(text)
+        ? "Match found!"
+        : "No match found!";
+  }
+
+  // Email validation
+  function validateEmail() {
+    let email = document.getElementById("email").value;
+    let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    document.getElementById("emailResult").innerText =
+      pattern.test(email)
+        ? "Valid Email Address"
+        : "Invalid Email Address";
+  }
+</script>
+
+</body>
+</html>
