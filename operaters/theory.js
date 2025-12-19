@@ -1,4 +1,6 @@
-// Operaters in JavaScript
+// Operators in JavaScript
+// Operators are special symbols that perform operations on operands (values and variables).
+// They can be categorized into several types:
 
 // 1. Arithmetic Operators (+ - * / % )
 let num1 = 10;
