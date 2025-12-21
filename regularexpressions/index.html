@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Regular Expressions in JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      padding: 20px;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    h2 {
+      color: #2980b9;
+      margin-top: 30px;
+    }
+
+    p {
+      color: #444;
+      font-size: 15px;
+    }
+
+    code {
+      background: #eef;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    pre {
+      background: #2d2d2d;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    .output {
+      background: #eafaf1;
+      padding: 10px;
+      border-left: 5px solid #27ae60;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Regular Expressions (RegEx) in JavaScript</h1>
+
+  <h2>1. What is a Regular Expression?</h2>
+  <p>
+    A <strong>Regular Expression (RegEx)</strong> is a pattern used to 
+    <strong>search, match, or replace text</strong>.
+  </p>
+  <p>
+    It is commonly used for:
+    <ul>
+      <li>Validating emails and phone numbers</li>
+      <li>Searching text</li>
+      <li>Replacing words</li>
+    </ul>
+  </p>
+
+  <h2>2. How to Create a RegEx</h2>
+  <p>There are two ways to create a RegEx:</p>
+
+  <pre>
+// Method 1: Using slashes
+let pattern1 = /hello/;
+
+// Method 2: Using RegExp constructor
+let pattern2 = new RegExp("hello");
+  </pre>
+
+  <h2>3. Common RegEx Methods</h2>
+
+  <h3>test() – Checks if pattern exists</h3>
+  <pre>
+let text = "Hello World";
+let pattern = /World/;
+
+let result = pattern.test(text);
+console.log(result); // true
+  </pre>
+
+  <div class="output">
+    Output: <strong>true</strong> (because "World" exists)
+  </div>
+
+  <h3>match() – Finds matching values</h3>
+  <pre>
+let text = "I love JavaScript";
+let result = text.match(/JavaScript/);
+console.log(result);
+  </pre>
+
+  <div class="output">
+    Output: ["JavaScript"]
+  </div>
+
+  <h3>replace() – Replaces matched text</h3>
+  <pre>
+let text = "I like cats";
+let result = text.replace(/cats/, "dogs");
+console.log(result);
+  </pre>
+
+  <div class="output">
+    Output: I like dogs
+  </div>
+
+  <h2>4. Important RegEx Symbols</h2>
+
+  <pre>
+.   → Any single character
+\d  → Any digit (0–9)
+\w  → Any word character (a-z, A-Z, 0-9)
+\s  → Space
+^   → Starts with
+$   → Ends with
++   → One or more times
+*   → Zero or more times
+  </pre>
+
+  <h2>5. Example: Check Mobile Number</h2>
+  <p>Mobile number should contain exactly 10 digits:</p>
+
+  <pre>
+let mobile = "9876543210";
+let pattern = /^\d{10}$/;
+
+console.log(pattern.test(mobile));
+  </pre>
+
+  <div class="output">
+    Output: true
+  </div>
+
+  <h2>6. Example: Check Email</h2>
+
+  <pre>
+let email = "test@gmail.com";
+let pattern = /^[a-zA-Z0-9._]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/;
+
+console.log(pattern.test(email));
+  </pre>
+
+  <div class="output">
+    Output: true
+  </div>
+
+  <h2>7. Flags in RegEx</h2>
+
+  <pre>
+i → Case insensitive
+g → Global search
+m → Multiline
+  </pre>
+
+  <pre>
+let text = "Hello hello";
+let pattern = /hello/gi;
+
+console.log(text.match(pattern));
+  </pre>
+
+  <div class="output">
+    Output: ["Hello", "hello"]
+  </div>
+
+  <h2>8. Summary</h2>
+  <p>
+    ✔ RegEx is used for pattern matching<br>
+    ✔ Helps in validation and text manipulation<br>
+    ✔ Very powerful and commonly used in JavaScript
+  </p>
+
+</div>
+
+</body>
+</html>
