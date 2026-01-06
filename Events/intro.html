@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Events & Types</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: #16a085;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        .box {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #3498db;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        input, select {
+            padding: 8px;
+            width: 260px;
+            margin-top: 5px;
+        }
+
+        .output {
+            margin-top: 10px;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>JavaScript Events</h1>
+
+    <p>
+        <strong>JavaScript Events</strong> are actions performed by the user or the browser.
+        JavaScript reacts to these actions using <strong>event handlers</strong>.
+    </p>
+
+    <!-- TYPES OF EVENTS -->
+    <h2>Types of JavaScript Events</h2>
+
+    <p>
+        JavaScript events are broadly classified into the following types:
+    </p>
+
+    <ul>
+        <li><strong>Mouse Events</strong></li>
+        <li><strong>Keyboard Events</strong></li>
+        <li><strong>Form Events</strong></li>
+        <li><strong>Window / Document Events</strong></li>
+        <li><strong>Clipboard Events</strong></li>
+    </ul>
+
+    <!-- MOUSE EVENTS -->
+    <h3>1. Mouse Events</h3>
+    <p>
+        Mouse events occur when the user interacts with the mouse.
+    </p>
+    <ul>
+        <li><code>click</code></li>
+        <li><code>dblclick</code></li>
+        <li><code>mouseover</code></li>
+        <li><code>mouseout</code></li>
+        <li><code>mousedown</code></li>
+        <li><code>mouseup</code></li>
+    </ul>
+
+    <div class="box" onmouseover="mouseOver()" onmouseout="mouseOut()" id="mouseBox">
+        Hover or click here
+    </div>
+
+    <!-- KEYBOARD EVENTS -->
+    <h3>2. Keyboard Events</h3>
+    <p>
+        Keyboard events occur when the user presses keys on the keyboard.
+    </p>
+    <ul>
+        <li><code>keydown</code></li>
+        <li><code>keyup</code></li>
+        <li><code>keypress</code> (deprecated)</li>
+    </ul>
+
+    <div class="box">
+        <input type="text" onkeyup="keyboardEvent(this.value)" placeholder="Type something">
+        <p id="keyOutput" class="output"></p>
+    </div>
+
+    <!-- FORM EVENTS -->
+    <h3>3. Form Events</h3>
+    <p>
+        Form events occur when the user interacts with form elements.
+    </p>
+    <ul>
+        <li><code>submit</code></li>
+        <li><code>change</code></li>
+        <li><code>focus</code></li>
+        <li><code>blur</code></li>
+        <li><code>reset</code></li>
+    </ul>
+
+    <div class="box">
+        <form onsubmit="formSubmit(event)">
+            <input type="text" onfocus="focusEvent()" onblur="blurEvent()" required placeholder="Enter name">
+            <br><br>
+            <select onchange="changeEvent(this.value)">
+                <option value="">Select course</option>
+                <option>JavaScript</option>
+                <option>Python</option>
+            </select>
+            <br><br>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="formOutput" class="output"></p>
+    </div>
+
+    <!-- WINDOW EVENTS -->
+    <h3>4. Window / Document Events</h3>
+    <p>
+        These events are related to the browser window or document.
+    </p>
+    <ul>
+        <li><code>load</code></li>
+        <li><code>resize</code></li>
+        <li><code>scroll</code></li>
+        <li><code>unload</code></li>
+    </ul>
+
+    <div class="box">
+        Resize the browser window to see the effect
+        <p id="windowOutput" class="output"></p>
+    </div>
+
+    <!-- CLIPBOARD EVENTS -->
+    <h3>5. Clipboard Events</h3>
+    <p>
+        Clipboard events occur when the user copies, cuts, or pastes content.
+    </p>
+    <ul>
+        <li><code>copy</code></li>
+        <li><code>cut</code></li>
+        <li><code>paste</code></li>
+    </ul>
+
+    <div class="box">
+        <input type="text" oncopy="clipboardEvent('Copied')" 
+               oncut="clipboardEvent('Cut')" 
+               onpaste="clipboardEvent('Pasted')"
+               placeholder="Copy / Paste here">
+        <p id="clipOutput" class="output"></p>
+    </div>
+
+</div>
+
+<script>
+    /* Mouse Events */
+    function mouseOver() {
+        let box = document.getElementById("mouseBox");
+        box.style.backgroundColor = "#dff9fb";
+        box.innerText = "Mouse Over Event";
+    }
+
+    function mouseOut() {
+        let box = document.getElementById("mouseBox");
+        box.style.backgroundColor = "#ecf0f1";
+        box.innerText = "Hover or click here";
+    }
+
+    /* Keyboard Event */
+    function keyboardEvent(value) {
+        document.getElementById("keyOutput").innerText =
+            "Keyboard Event Value: " + value;
+    }
+
+    /* Form Events */
+    function focusEvent() {
+        document.getElementById("formOutput").innerText =
+            "Input field focused";
+    }
+
+    function blurEvent() {
+        document.getElementById("formOutput").innerText =
+            "Input field lost focus";
+    }
+
+    function changeEvent(value) {
+        document.getElementById("formOutput").innerText =
+            "Selected: " + value;
+    }
+
+    function formSubmit(event) {
+        event.preventDefault();
+        document.getElementById("formOutput").innerText =
+            "Form submitted successfully";
+    }
+
+    /* Window Event */
+    window.onresize = function () {
+        document.getElementById("windowOutput").innerText =
+            "Window resized";
+    };
+
+    /* Clipboard Event */
+    function clipboardEvent(action) {
+        document.getElementById("clipOutput").innerText =
+            "Text " + action;
+    }
+</script>
+
+</body>
+</html>
