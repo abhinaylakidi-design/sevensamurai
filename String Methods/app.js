@@ -10,8 +10,8 @@ function updateNameWithYear() {
     let dob = dobInput.value;
 
     let fullName = (firstName + lastName).split(" ").join("");
-    let namePart = fullName.substring(0, 4).toUpperCase();
-    let yearPart = dob ? new Date(dob).getFullYear() : "";
+    let namePart = firstName.substring(0).toUpperCase();
+    let yearPart = lastName.substring(0).toUpperCase();
     let finalValue = namePart + yearPart;
 
     fullNameInput.value = finalValue;
@@ -21,6 +21,7 @@ function updateNameWithYear() {
     } else {
         profile.innerText = "";
     }
+
 }
 
 firstNameInput.addEventListener("input", updateNameWithYear);
